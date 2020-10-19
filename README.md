@@ -28,10 +28,16 @@ And install the dependencies with npm:
 npm install -D
 ```
 
-or yarn:
+or with yarn:
 
 ```bash
 yarn install
+```
+
+if you get node version error with yarn:
+
+```bash
+yarn install --ignore-engines
 ```
 
 Then start the watch script for development:
