@@ -57,10 +57,10 @@ npm run package
 | src/main/        | Sorce codes for the main process of Electron (Runs on the built-in Node.js)      |
 | src/public/      | Public files like HTML, CSS and so on                                            |
 | src/svelte/      | Sorce codes for the renderer process of Electron (Runs on the built-in Chromium) |
-| .prettier\*      | Configuration files for [Prettier][prettier]                                     |
-| forge.config.js  | Configuration file for [electron-forge][e-f] for build the app                   |
-| gulpfile.ts      | Configuration file for Gulp for build the app                                    |
-| rollup.config.js | Configuration file for Rollup for build Svelte app                               |
+| .prettier\*      | Configuration files for Prettier                                                 |
+| forge.config.js  | Configuration file for Electron Forge for build the app                          |
+| gulpfile.ts      | Configuration file for gulp.js for build the app                                 |
+| rollup.config.js | Configuration file for rollup.js for build Svelte app                            |
 
 [electron]: https://www.electronjs.org/
 [svelte]: https://svelte.dev/
