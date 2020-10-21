@@ -1,12 +1,15 @@
 <script lang="ts">
   import Link from "./Link.svelte";
-  // const { ipcRenderer } = require("electron");
+  const isDev = require("electron-is-dev");
 
   export let name: string;
 </script>
 
 <template>
   <main>
+    {#if isDev}
+      <p>Development Mode</p>
+    {/if}
     <h1>Hello {name}!</h1>
     <p>
       Visit the
