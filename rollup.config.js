@@ -6,12 +6,12 @@ import json from "@rollup/plugin-json";
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 
-const production = !process.env.ROLLUP_WATCH;
+const dev = process.env.ROLLUP_WATCH;
 
 export default {
   input: "src/svelte/index.ts",
   output: {
-    sourcemap: !production,
+    sourcemap: dev,
     format: "esm",
     name: "app",
     dir: "dist/svelte",
@@ -19,14 +19,14 @@ export default {
   },
   plugins: [
     svelte({
-      dev: !production,
+      dev,
       css: css => {
-        css.write("style.css", !production);
+        css.write("style.css", dev);
       },
       preprocess: sveltePreprocess({
         typescript: {
           tsconfigFile: "src/svelte/tsconfig.json",
-          compilerOptions: { sourceMap: !production, inlineSources: !production },
+          compilerOptions: { sourceMap: dev, inlineSources: dev },
         },
       }),
     }),
@@ -44,10 +44,10 @@ export default {
     json({ namedExports: true }),
     typescript({
       tsconfig: "src/svelte/tsconfig.json",
-      sourceMap: !production,
-      inlineSources: !production,
+      sourceMap: dev,
+      inlineSources: dev,
     }),
-    production && terser(),
+    !dev && terser(),
   ],
   watch: {
     clearScreen: false,
