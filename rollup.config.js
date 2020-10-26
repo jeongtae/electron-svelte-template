@@ -1,10 +1,10 @@
-import json from "@rollup/plugin-json";
 import svelte from "rollup-plugin-svelte";
+import sveltePreprocess from "svelte-preprocess";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
-import sveltePreprocess from "svelte-preprocess";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -18,7 +18,6 @@ export default {
     chunkFileNames: "[name].mjs",
   },
   plugins: [
-    json(),
     svelte({
       dev: !production,
       css: css => {
@@ -42,6 +41,7 @@ export default {
       dedupe: module => module === "svelte" || module.startsWith("svelte/"),
     }),
     commonjs(),
+    json({ namedExports: true }),
     typescript({
       tsconfig: "src/svelte/tsconfig.json",
       sourceMap: !production,
