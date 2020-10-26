@@ -2,6 +2,7 @@ import json from "@rollup/plugin-json";
 import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
 
@@ -24,7 +25,10 @@ export default {
         css.write("style.css", !production);
       },
       preprocess: sveltePreprocess({
-        typescript: { tsconfigFile: "src/svelte/tsconfig.json" },
+        typescript: {
+          tsconfigFile: "src/svelte/tsconfig.json",
+          compilerOptions: { sourceMap: !production, inlineSources: !production },
+        },
       }),
     }),
 
@@ -38,6 +42,11 @@ export default {
       dedupe: module => module === "svelte" || module.startsWith("svelte/"),
     }),
     commonjs(),
+    typescript({
+      tsconfig: "src/svelte/tsconfig.json",
+      sourceMap: !production,
+      inlineSources: !production,
+    }),
     production && terser(),
   ],
   watch: {
