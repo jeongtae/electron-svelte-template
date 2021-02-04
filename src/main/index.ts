@@ -9,12 +9,8 @@ if (require("electron-squirrel-startup")) {
 }
 
 if (isDev) {
-  // Import electron-reload module dynamically
-  import("electron-reload").then(({ default: watch }) => {
-    watch(path.join(__dirname, ".."), {
-      electron: path.join(__dirname, "../../node_modules", ".bin", "electron"),
-      awaitWriteFinish: true,
-    });
+  import("electron-reloader").then(({ default: watch }) => {
+    watch(module, { watchRenderer: false, ignore: [] });
   });
 }
 

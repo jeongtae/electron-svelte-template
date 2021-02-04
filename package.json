@@ -42,7 +42,7 @@
     "@types/gulp": "^4.0.8",
     "@types/gulp-terser": "^1.2.1",
     "electron": "11.2.2",
-    "electron-reload": "^1.5.0",
+    "electron-reloader": "^1.2.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-filter": "^6.0.0",
