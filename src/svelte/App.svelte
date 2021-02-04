@@ -1,6 +1,8 @@
 <script lang="ts">
+  const { dev } = require("electron-is");
   import Link from "./Link.svelte";
-  const { dev: isDev } = require("electron-is");
+
+  const isDev = dev();
 
   export let name: string;
 </script>
