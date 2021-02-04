@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
-import isDev from "electron-is-dev";
+import { dev as isDev } from "electron-is";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
